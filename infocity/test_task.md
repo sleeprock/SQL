@@ -1,8 +1,8 @@
 ## Тестовое задание
 
-прилагаются 2 файла:
-infocity.sql - основные запросы
-files_insert.sql - заполнение таблицы files
+прилагаются 2 файла: \
+infocity.sql - основные запросы \
+files_insert.sql - заполнение таблицы files \
 
 ``` sql
 
@@ -215,4 +215,5 @@ from rakurs_cnt r
 inner join photo_cnt p
 on r.task_id = p.task_id
 ;
-'''
+```
+
