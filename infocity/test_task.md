@@ -2,7 +2,7 @@
 
 прилагаются 2 файла: \
 infocity.sql - основные запросы \
-files_insert.sql - заполнение таблицы files \
+files_insert.sql - заполнение таблицы files 
 
 ``` sql
 
