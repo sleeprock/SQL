@@ -78,3 +78,40 @@ ON c.id = m.country_id
 GROUP BY country;
 ```
 
+Calculate the percentage of matches tied using a CASE statement inside AVG.
+Fill in the logical operators for each statement. Alias your columns as ties_2013_2014 and ties_2014_2015, respectively.
+
+```sql
+SELECT 
+	c.name AS country,
+    -- Calculate the percentage of tied games in each season
+	avg(case when m.season='2013/2014' AND m.home_goal = m.away_goal THEN 1
+			WHEN m.season='2013/2014' AND m.home_goal != m.away_goal THEN 0
+			END) AS ties_2013_2014,
+	avg(case when m.season='2014/2015' and m.home_goal = m.away_goal THEN 1
+			WHEN m.season='2014/2015' and m.home_goal != m.away_goal THEN 0
+			END) AS ties_2014_2015
+FROM country AS c
+LEFT JOIN matches AS m
+ON c.id = m.country_id
+GROUP BY country;
+```
+
+The previous "ties" columns returned values with 14 decimal points, which is not easy to interpret. Use the ROUND function to round to 2 decimal points.
+
+```sql
+SELECT 
+	c.name AS country,
+    -- Round the percentage of tied games to 2 decimal points
+	Round(avg(CASE WHEN m.season='2013/2014' AND m.home_goal = m.away_goal THEN 1
+			 WHEN m.season='2013/2014' AND m.home_goal != m.away_goal THEN 0
+			 END),2) AS pct_ties_2013_2014,
+	Round(avg(CASE WHEN m.season='2014/2015' AND m.home_goal = m.away_goal THEN 1
+			 WHEN m.season='2014/2015' AND m.home_goal != m.away_goal THEN 0
+			 END),2) AS pct_ties_2014_2015
+FROM country AS c
+LEFT JOIN matches AS m
+ON c.id = m.country_id
+GROUP BY country;
+```
+
