@@ -18,13 +18,7 @@ PARTITION BY LIST (acc_type)
 TABLESPACE data01_tbs
 ;
 
---ИЛИ ТАК
-create table public.data_base (
-    like data_base_old
-    including defaults
-    including constraints
-    including indexes
-);
+
 
 ```
 Создаем секции для клиентов
@@ -40,6 +34,14 @@ CREATE TABLE db_abbott PARTITION OF data_base FOR VALUES IN ('ABBOTT');
 ```sql
 INSERT into public.data_base
 select * from public.data_base_old
+
+--ИЛИ ТАК
+create table public.data_base (
+    like data_base_old
+    including defaults
+    including constraints
+    including indexes
+);
 ```
 
 создаем индексы для секций
