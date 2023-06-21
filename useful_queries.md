@@ -15,6 +15,6 @@ WHERE dictionary_size > 0
 ```
 
 Search in Postgres procedures text
-'''sql
+```sql
 select * from pg_proc where prosrc ilike '%text%';
-'''
+```
