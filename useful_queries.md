@@ -13,3 +13,8 @@ datatype,((dictionary_size/1024)/1000) AS size_mb
 FROM $system.discover_storage_table_columns
 WHERE dictionary_size > 0
 ```
+
+Search in Postgres procedures text
+'''sql
+select * from pg_proc where prosrc ilike '%text%';
+'''
