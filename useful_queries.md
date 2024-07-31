@@ -22,10 +22,10 @@ select * from pg_proc where prosrc ilike '%text%';
 Check tables size by tablespace
 ```sql
 select schemaname, tablename
-     , pg_relation_size(schemaname || '.' || tablename) as size_bytes
+     , pg_size_pretty (pg_relation_size(schemaname || '.' || tablename)) as size_bytes
   from pg_tables
-  where tablespace = 'data02_tbs'
-  order by 3 desc
+  where tablespace = 'data05_tbs'
+  order by 3 desc;
 ```
 
 Get partitions ddl
